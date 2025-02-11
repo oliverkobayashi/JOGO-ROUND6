@@ -9,68 +9,94 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 :root {
-  --very-dark-blue: #0a0a23;
+  --dark-green: #1b5e20;
+  --light-green: #388e3c;
+  --pink: #ff0055;
+  --dark-pink: #c70039;
   --white: #ffffff;
-  --yellow: #f1be32;
-  --golden-yellow: #feac32;
-  --dark-yellow: #f89808;
-  --light-gray: #d9d9d9;
+  --black: #000000;
 }
 
 body {
-  background: linear-gradient(135deg, #0a0a23, #1a1a40);
+  background-color: var(--dark-green);
   text-align: center;
   color: var(--white);
   font-family: "Poppins", sans-serif;
   padding: 20px;
 }
 
+.mascara-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .mascara {
+    width: 120px;
+    height: 120px;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px var(--pink);
+  }
+  
+  .mascara-simbolo {
+    font-size: 50px;
+    color: var(--white);
+  }
+
 h1 {
-  margin: 15px 0 20px;
-  font-size: 2rem;
-  font-weight: 600;
+    margin: 15px 0 20px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0px 0px 10px var(--pink);
 }
 
 .btn {
-  cursor: pointer;
-  width: 120px;
-  height: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 10px;
-  color: var(--very-dark-blue);
-  background: linear-gradient(180deg, var(--golden-yellow), var(--dark-yellow));
-  border: none;
-  border-radius: 10px;
-  box-shadow: 2px 4px 10px rgba(255, 172, 51, 0.3);
-  transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    width: 140px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px;
+    color: var(--white);
+    background: var(--pink);
+    border: 3px solid var(--dark-pink);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px var(--pink);
+    transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
-  transform: scale(1.1);
-  background: linear-gradient(180deg, var(--dark-yellow), var(--golden-yellow));
+    transform: scale(1.1);
+    background: var(--dark-pink);
+    box-shadow: 0px 0px 15px var(--dark-pink);
 }
 
 .regras-container{
     padding: 15px;
   margin: 20px auto;
   border-radius: 15px;
-  border: 4px solid var(--yellow);
-  background: var(--light-gray);
-  color: var(--very-dark-blue);
+  border: 4px solid var(--pink);
+  background: var(--black);
+  color: var(--white);
   max-width: 500px;
   text-align: left;
 }
 
 .regras-container summary{
     font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .regras-container ul{
     list-style-type: none;
-  margin: 10px 0;
+    margin: 10px 0;
 }
 
 .ponto-container{
@@ -80,7 +106,13 @@ h1 {
   margin: 30px 0;
   font-size: 1.5rem;
   font-weight: bold;
-}
+
+  .ponto-container strong {
+    background: var(--light-green);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px var(--light-green);
+  }
 
 .resultados-container{
     font-size: 1.3rem;
@@ -88,13 +120,32 @@ h1 {
 }
 
 #vencedor-msg { 
-   margin-top: 45px;
-  font-size: 1.5rem;
-  font-weight: bold;
+    margin-top: 25px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px var(--pink);
 }
+
+.lost {
+    animation: shake 0.5s ease-in-out infinite alternate;
+    color: var(--pink);
+    text-shadow: 0px 0px 15px var(--pink);
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(5px);
+    }
+  }
 
 #reset-jogo-btn {
     display: none;
   margin: 20px auto;
-  width: 150px;
+  width: 160px;
+  background: var(--pink);
+  font-size: 1.2rem;
+  text-shadow: 0px 0px 10px var(--dark-pink);
 }
