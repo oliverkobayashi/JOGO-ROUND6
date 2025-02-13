@@ -48,4 +48,26 @@ function showResultados(userEscolha) {
     }
 };
 
+function resetJogo(){
+
+};
+
+resetJogoBtn.addEventListener("click", resetJogo);
+
+const pedraBtn = document.getElementById("pedra-btn");
+const papelBtn = document.getElementById("papel-btn");
+const tesouraBtn = document.getElementById("tesoura-btn");
+
+pedraBtn.addEventListener("click", function () {
+    showResultados("Pedra");
+});
+
+papelBtn.addEventListener("click", function(){
+    showResultados("Papel");
+});
+
+tesouraBtn.addEventListener("click", function(){
+    showResultados("Tesoura");
+    });
+
 
