@@ -15,3 +15,18 @@ function oJogadorGanhouARodada(jogador, computador) {
 let jogadorPonto = 0;
 let computadorPonto = 0;
 
+function getRodadaResultados(userEscolha){ 
+const computadorResultado = getAleatorioComputadorResultado();
+
+if(oJogadorGanhouARodada(userEscolha,computadorPonto)) {
+    jogadorPonto++;
+    return `Jogador ganhou! ${userEscolha} vence ${computadorResultado}`;
+} else if(computadorResultado==userEscolha) {
+    return `É um empate! Ambos escolheram ${userEscolha}`;
+} else {
+    computadorPonto `Computador ganhou! ${computadorResultado} vence ${userEscolha}`;
+}
+}
+
+
+
