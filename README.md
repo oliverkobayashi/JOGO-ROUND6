@@ -1,4 +1,4 @@
-# JOGO-ROUND6
+# JOGO PEDRA, PAPEL E TESOURA
  <strong>Descrição do Projeto - Pedra, Papel, Tesoura 🎮✋🪨✂️</strong><br>
 Este é um projeto interativo do clássico jogo Pedra, Papel, Tesoura, desenvolvido com HTML, CSS e JavaScript. O objetivo do jogo é simples: o jogador compete contra o computador, e o primeiro a alcançar três pontos vence a partida.<br>
 
