@@ -1,151 +1,206 @@
+
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bangers&family=Luckiest+Guy&display=swap");
 
 :root {
-  --dark-green: #1b5e20;
-  --light-green: #388e3c;
-  --pink: #ff0055;
-  --dark-pink: #c70039;
-  --white: #ffffff;
-  --black: #000000;
+    --dark-green: #1b5e20;
+    --light-green: #388e3c;
+    --pink: #ff0055;
+    --dark-pink: #c70039;
+    --white: #ffffff;
+    --black: #000000;
 }
 
 body {
-  background-color: var(--dark-green);
-  text-align: center;
-  color: var(--white);
-  font-family: "Poppins", sans-serif;
-  padding: 20px;
+    background-color: var(--dark-green);
+    text-align: center;
+    color: var(--white);
+    font-family: "Poppins", sans-serif;
+    padding: 20px;
 }
 
-.mascara-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .mascara {
-    width: 120px;
-    height: 120px;
-    background: var(--black);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 20px var(--pink);
-  }
-  
-  .mascara-simbolo {
-    font-size: 50px;
-    color: var(--white);
-  }
 
 h1 {
     margin: 15px 0 20px;
-    font-size: 2.2rem;
+    font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--white);
-    text-shadow: 0px 0px 10px var(--pink);
+    text-align: center;
+    font-family: "Luckiest Guy", cursive;
+    background: linear-gradient(45deg, var(--pink), var(--light-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 10px rgba(255, 0, 85, 0.8), 3px 3px 20px rgba(56, 142, 60, 0.8);
+    animation: glow 1.5s infinite alternate;
 }
 
+@keyframes glow {
+    0% {
+        text-shadow: 3px 3px 10px rgba(255, 0, 85, 0.8), 3px 3px 20px rgba(56, 142, 60, 0.8);
+    }
+    100% {
+        text-shadow: 3px 3px 15px rgba(255, 0, 85, 1), 3px 3px 25px rgba(56, 142, 60, 1);
+    }
+}
+
+main, h1 {
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+.mascara-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.mascara {
+  width: 120px;
+  height: 120px;
+  background: var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px var(--pink);
+  animation: pulse 1.5s infinite alternate;
+}
+
+.mascara-simbolo {
+  font-size: 50px;
+  color: var(--white);
+}
+
+
+
+
 .btn {
-    cursor: pointer;
-    width: 140px;
-    height: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 10px;
-    color: var(--white);
-    background: var(--pink);
-    border: 3px solid var(--dark-pink);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--pink);
-    transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  width: 160px;
+  height: 55px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px;
+  color: var(--white);
+  background: var(--pink);
+  border: 3px solid var(--dark-pink);
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px var(--pink);
+  transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
-    transform: scale(1.1);
-    background: var(--dark-pink);
-    box-shadow: 0px 0px 15px var(--dark-pink);
+  transform: scale(1.1);
+  background: var(--dark-pink);
+  box-shadow: 0px 0px 20px var(--dark-pink);
 }
 
-.regras-container{
-    padding: 15px;
+
+.regras-container {
+  padding: 15px;
   margin: 20px auto;
   border-radius: 15px;
   border: 4px solid var(--pink);
-  background: var(--black);
+  background: rgba(0, 0, 0, 0.8);
   color: var(--white);
   max-width: 500px;
   text-align: left;
+  box-shadow: 0px 0px 10px var(--pink);
 }
 
-.regras-container summary{
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
+.regras-container summary {
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.regras-container ul{
-    list-style-type: none;
-    margin: 10px 0;
+.regras-container ul {
+  list-style-type: none;
+  margin: 10px 0;
 }
 
-.ponto-container{
-    display: flex;
+
+.ponto-container {
+  display: flex;
   justify-content: center;
   gap: 40px;
   margin: 30px 0;
   font-size: 1.5rem;
   font-weight: bold;
+}
 
-  .ponto-container strong {
-    background: var(--light-green);
-  padding: 10px;
+.ponto-container strong {
+  background: var(--light-green);
+  padding: 12px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px var(--light-green);
-  }
+  box-shadow: 0px 0px 15px var(--light-green);
+}
 
-.resultados-container{
-    font-size: 1.3rem;
+
+.resultados-container {
+  font-size: 1.3rem;
   margin: 20px 0;
 }
 
-#vencedor-msg { 
-    margin-top: 25px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-shadow: 0px 0px 10px var(--pink);
+#vencedor-msg {
+  margin-top: 25px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px var(--pink);
 }
 
+
 .lost {
-    animation: shake 0.5s ease-in-out infinite alternate;
-    color: var(--pink);
-    text-shadow: 0px 0px 15px var(--pink);
-  }
-  
-  @keyframes shake {
-    0% {
-      transform: translateX(-5px);
-    }
-    100% {
-      transform: translateX(5px);
-    }
-  }
+  animation: shake 0.5s ease-in-out infinite alternate;
+  color: var(--pink);
+  text-shadow: 0px 0px 15px var(--pink);
+}
+
 
 #reset-jogo-btn {
-    display: none;
+  display: none;
   margin: 20px auto;
-  width: 160px;
+  width: 180px;
   background: var(--pink);
   font-size: 1.2rem;
   text-shadow: 0px 0px 10px var(--dark-pink);
+}
+
+
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0px 0px 20px var(--pink);
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px var(--pink);
+  }
 }

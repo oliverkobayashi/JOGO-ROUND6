@@ -21,10 +21,10 @@ function getRodadaResultados(userEscolha) {
     if (oJogadorGanhouARodada(userEscolha, computadorResultado)) {
         jogadorPonto++;
         return `Jogador ganhou! ${userEscolha} vence ${computadorResultado}`;
-    } else if (computadorResultado == userEscolha) {
+    } else if (computadorResultado === userEscolha) {
         return `É um empate! Ambos escolheram ${userEscolha}`;
     } else {
-        computadorPonto++; 
+        computadorPonto++;
         return `Computador ganhou! ${computadorResultado} vence ${userEscolha}`;
     }
 }
@@ -43,7 +43,6 @@ function showResultados(userEscolha) {
 
     if (jogadorPonto === 3 || computadorPonto === 3) {
         ganhadorMsgElement.innerText = `${jogadorPonto === 3 ? "Jogador" : "Computador"} venceu o jogo!`;
-
         resetJogoBtn.style.display = "block";
         escolhasContainer.style.display = "none";
     }
@@ -62,18 +61,6 @@ function resetJogo() {
 
 resetJogoBtn.addEventListener("click", resetJogo);
 
-const pedraBtn = document.getElementById("pedra-btn");
-const papelBtn = document.getElementById("papel-btn");
-const tesouraBtn = document.getElementById("tesoura-btn");
-
-pedraBtn.addEventListener("click", function () {
-    showResultados("Pedra");
-});
-
-papelBtn.addEventListener("click", function () {
-    showResultados("Papel");
-});
-
-tesouraBtn.addEventListener("click", function () {
-    showResultados("Tesoura");
-});
+document.getElementById("pedra-btn").addEventListener("click", () => showResultados("Pedra"));
+document.getElementById("papel-btn").addEventListener("click", () => showResultados("Papel"));
+document.getElementById("tesoura-btn").addEventListener("click", () => showResultados("Tesoura"));
