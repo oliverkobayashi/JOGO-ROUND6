@@ -35,5 +35,17 @@ const ganhadorMsgElement = document.getElementById("vencedor-msg");
 const escolhasContainer = document.getElementById("escolhas-container");
 const resetJogoBtn = document.getElementById("reset-jogo-btn");
 
+function showResultados(userEscolha) {
+    rodadaResultadoMsg.innerText = getRodadaResultados(userEscolha);
+    computadorPontoSpanElement.innerText = computadorPonto;
+    jogadorPontoSpanElement.innerText =jogadorPonto;
+
+    if(jogadorPonto===3 || computadorPonto ===3){
+        ganhadorMsgElement.innerText= `${jogadorPonto===3?"Jogador" :"Computador"} venceu o jogo!`;
+
+        resetJogoBtn.style.display ="block";
+        escolhasContainer.style.display="none";
+    }
+};
 
 
