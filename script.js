@@ -28,5 +28,12 @@ if(oJogadorGanhouARodada(userEscolha,computadorPonto)) {
 }
 }
 
+const jogadorPontoSpanElement = document.getElementById("jogador-ponto");
+const computadorPontoSpanElement = document.getElementById("computador-ponto");
+const rodadaResultadoMsg = document.getElementById("resultados-msg");
+const ganhadorMsgElement = document.getElementById("vencedor-msg");
+const escolhasContainer = document.getElementById("escolhas-container");
+const resetJogoBtn = document.getElementById("reset-jogo-btn");
+
 
 
