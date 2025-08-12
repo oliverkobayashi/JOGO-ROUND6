@@ -1,55 +1,195 @@
 <!DOCTYPE html>
 <html lang="pt-Br">
 <head>
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1b5e20">
     <link rel="stylesheet" href="./estilo.css">
-<title>Pedra, Papel, Tesoura Jogo</title>
+    <title>Round6 - Pedra, Papel, Tesoura</title>
+    <meta name="description" content="Jogue Pedra, Papel, Tesoura no tema Round6. Veja regras e histórico de partidas.">
+    <style>
+      .hidden { display: none !important; }
+      .home-menu { display:grid; grid-template-columns: repeat(3, minmax(160px,1fr)); gap:14px; margin:12px auto 0; width:min(720px,100%); }
+      @media (max-width: 720px) { .home-menu { grid-template-columns: 1fr; } }
+      .home-menu .btn { width:100%; height:64px; display:flex; align-items:center; justify-content:center; gap:8px; }
+      .shape { font-weight:900; filter: drop-shadow(0 0 6px rgba(255,0,85,.28)); }
+      .toolbar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; margin:8px 0 12px; }
+      .historico-list { display:grid; gap:10px; }
+      .historico-item { display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.12) }
+    </style>
 </head>
 <body>
-    <div class="mascara-container">
-    <div class="mascara">
-        <span class="mascara-simbolo">△</span>
-    </div>
-    </div>
+  <div class="mascara-container">
+    <div class="mascara" aria-hidden="true"><span class="mascara-simbolo">△</span></div>
+  </div>
 
-    <h1>Vamos jogar Pedra, Papel,Tesoura!</h1>
-<main>
-    <details class="regras-container">
-    <summary> Regras do Jogo </summary>
-    <p>Você estará jogando contra o computador</p>
-    <p>Você pode escolher entre Pedra, Papel e Tesoura.</p>
-    <p>O primeiro a chegar a três pontos vence.</p>
+  <div class="app-container">
+    <h1>Round6: Pedra, Papel, Tesoura</h1>
 
-    <p>Aqui estão as regras para obter um ponto no jogo: </p>
-    <ul>
-        <li> 🔺 Pedra vence Tesoura </li>
-        <li> ⬜ Tesoura vence Papel </li>
-        <li>⚫ Papel vence Pedra</li>
-    </ul>
-    <p> Se o jogador e o computador escolherem  a mesma opção(ex:Papel e Papel), ninguém ganha ponto.</p>
-    </details>
-
-    <div class="ponto-container">
-        <strong>Jogador Pontuação:<span class="ponto" id="jogador-ponto">0</span></strong>
-        <strong>Computador Pontuação:<span class="ponto" id="computador-ponto">0</span></strong>
-    </div>
-
-    <section class="escolhas-container">
-        <h2>Escolha uma opção</h2>
-        <div class="btn-container">
-            <button id="pedra-btn" class="btn">Pedra</button>
-            <button id="papel-btn" class="btn">Papel</button>
-            <button id="tesoura-btn" class="btn">Tesoura</button>
-        </div>
+    <section id="sec-home" aria-label="Menu principal">
+      <p style="opacity:.9;margin:8px 0 18px">Escolha uma opção para começar.</p>
+      <div class="home-menu">
+        <button id="btn-home-jogar" class="btn" type="button"><span class="shape">△</span> Jogar</button>
+        <button id="btn-home-regras" class="btn" type="button"><span class="shape">⬜</span> Regras</button>
+        <button id="btn-home-historico" class="btn" type="button"><span class="shape">◯</span> Histórico</button>
+      </div>
     </section>
 
-    <div class="resultados-container">
-        <p id="resultados-msg"></p>
-        <p id="vencedor-msg"></p>
-        <button class="btn" id="reset-jogo-btn"> Jogar Novamente? </button>
-    </div>
-</main>
-<script src="./script.js"></script>
+    <section id="sec-regras" class="hidden" aria-label="Regras do Jogo">
+      <div class="toolbar"><button class="btn" type="button" id="voltar-home-1" style="width:auto;padding:0 14px;height:44px">◀ Voltar</button></div>
+      <details class="regras-container" open>
+        <summary>Regras do Jogo</summary>
+        <p>Você estará jogando contra o computador</p>
+        <p>Você pode escolher entre Pedra, Papel e Tesoura.</p>
+        <p>O primeiro a chegar a três pontos vence.</p>
+
+        <p>Aqui estão as regras para obter um ponto no jogo: </p>
+        <ul>
+            <li> 🔺 Pedra vence Tesoura </li>
+            <li> ⬜ Tesoura vence Papel </li>
+            <li> ⚫ Papel vence Pedra</li>
+        </ul>
+        <p> Se o jogador e o computador escolherem a mesma opção (ex: Papel e Papel), ninguém ganha ponto.</p>
+      </details>
+    </section>
+
+    <main id="sec-jogo" class="hidden">
+      <div class="toolbar"><button class="btn" type="button" id="voltar-home-2" style="width:auto;padding:0 14px;height:44px">◀ Voltar</button></div>
+      <div class="ponto-container">
+          <strong>Jogador Pontuação: <span class="ponto" id="jogador-ponto">0</span></strong>
+          <strong>Computador Pontuação: <span class="ponto" id="computador-ponto">0</span></strong>
+      </div>
+
+      <section class="escolhas-container">
+          <h2>Escolha uma opção</h2>
+          <div class="btn-container">
+              <button id="pedra-btn" class="btn"><span class="btn-emoji" aria-hidden="true">🪨</span><span class="btn-label">Pedra</span></button>
+              <button id="papel-btn" class="btn"><span class="btn-emoji" aria-hidden="true">📄</span><span class="btn-label">Papel</span></button>
+              <button id="tesoura-btn" class="btn"><span class="btn-emoji" aria-hidden="true">✂️</span><span class="btn-label">Tesoura</span></button>
+          </div>
+      </section>
+
+      <div class="resultados-container">
+          <p id="resultados-msg" aria-live="polite" role="status"></p>
+          <p id="vencedor-msg" aria-live="assertive" role="status"></p>
+          <button class="btn" id="reset-jogo-btn"> Jogar Novamente? </button>
+      </div>
+    </main>
+
+    <section id="sec-historico" class="hidden" aria-label="Histórico de partidas">
+      <div class="toolbar">
+        <button class="btn" type="button" id="voltar-home-3" style="width:auto;padding:0 14px;height:44px">◀ Voltar</button>
+        <button class="btn" type="button" id="btn-limpar" style="width:auto;padding:0 14px;height:44px">Limpar histórico</button>
+      </div>
+      <section class="regras-container" style="max-width:720px">
+        <summary style="font-weight:700">Últimas partidas</summary>
+        <div id="lista-historico" class="historico-list" style="margin-top:10px"></div>
+      </section>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+  <script>
+    (function() {
+      const $ = s => document.querySelector(s);
+      const secHome = $('#sec-home');
+      const secJogo = $('#sec-jogo');
+      const secRegras = $('#sec-regras');
+      const secHistorico = $('#sec-historico');
+      const CHAVE = 'round6_historico';
+      
+      const winPlayer = new Audio('./assets/sound/wingame.wav');
+      winPlayer.preload = 'auto';
+      winPlayer.volume = 0.7;
+      const losePlayer = new Audio('./assets/sound/gameover.wav');
+      losePlayer.preload = 'auto';
+      losePlayer.volume = 0.5;
+
+      function mostrar(sec) {
+        [secHome, secJogo, secRegras, secHistorico].forEach(el => el.classList.add('hidden'));
+        sec.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      $('#btn-home-jogar').addEventListener('click', () => mostrar(secJogo));
+      $('#btn-home-regras').addEventListener('click', () => mostrar(secRegras));
+      $('#btn-home-historico').addEventListener('click', () => { renderHistorico(); mostrar(secHistorico); });
+      $('#voltar-home-1').addEventListener('click', () => mostrar(secHome));
+      $('#voltar-home-2').addEventListener('click', () => mostrar(secHome));
+      $('#voltar-home-3').addEventListener('click', () => mostrar(secHome));
+
+      function salvar(vencedor, placar) {
+        try {
+          const agora = new Date();
+          const item = { dataISO: agora.toISOString(), dataLocal: agora.toLocaleString(), vencedor, placar };
+          const arr = JSON.parse(localStorage.getItem(CHAVE) || '[]');
+          arr.unshift(item);
+          localStorage.setItem(CHAVE, JSON.stringify(arr.slice(0, 50)));
+        } catch(_) {}
+      }
+
+      function renderHistorico() {
+        const container = $('#lista-historico');
+        let dados = [];
+        try { dados = JSON.parse(localStorage.getItem(CHAVE) || '[]'); } catch(_) {}
+        if (!dados.length) { container.innerHTML = '<p style="opacity:.9">Nenhuma partida registrada ainda.</p>'; return; }
+        container.innerHTML = dados.map((d,i) => (
+          `<div class="historico-item">`
+          + `<span style="font-weight:700">#${i+1}</span>`
+          + `<span>${d.dataLocal || d.dataISO}</span>`
+          + `<span>Vencedor: <strong>${d.vencedor}</strong></span>`
+          + `<span>Placar: <strong>${(d.placar?.jogador ?? '-') } x ${(d.placar?.computador ?? '-') }</strong></span>`
+          + `</div>`
+        )).join('');
+      }
+
+      function limparHistorico() { try { localStorage.removeItem(CHAVE); } catch(_) {} renderHistorico(); }
+      $('#btn-limpar').addEventListener('click', limparHistorico);
+
+      const vencedorMsg = document.getElementById('vencedor-msg');
+      const jogadorSpan = document.getElementById('jogador-ponto');
+      const computadorSpan = document.getElementById('computador-ponto');
+      let jaSalvo = false;
+      new MutationObserver(() => {
+        const msg = vencedorMsg.textContent.trim();
+        if (msg && !jaSalvo) {
+          const vencedor = msg.includes('Jogador') ? 'Jogador' : 'Computador';
+          const placar = { jogador: parseInt(jogadorSpan.textContent || '0', 10), computador: parseInt(computadorSpan.textContent || '0', 10) };
+          salvar(vencedor, placar);
+          // Tocar som de fim de jogo
+          try { (vencedor === 'Jogador' ? winPlayer : losePlayer).currentTime = 0; } catch(_) {}
+          const pAudio = (vencedor === 'Jogador' ? winPlayer : losePlayer).play();
+          if (pAudio && typeof pAudio.catch === 'function') pAudio.catch(()=>{});
+          jaSalvo = true;
+          setTimeout(() => { jaSalvo = false; }, 1500);
+        }
+      }).observe(vencedorMsg, { childList: true, subtree: true, characterData: true });
+
+      mostrar(secHome);
+    })();
+  </script>
+  <script>
+    (function(){
+      const audioSrc = './assets/sound/click-button.mp3';
+      const clickPlayer = new Audio(audioSrc);
+      clickPlayer.preload = 'auto';
+      clickPlayer.volume = 0.5;
+      function playClick(){
+        try { clickPlayer.currentTime = 0; } catch(_) {}
+        const p = clickPlayer.play();
+        if (p && typeof p.catch === 'function') p.catch(()=>{});
+      }
+      document.addEventListener('click', function(e){
+        const el = e.target.closest('.btn');
+        if (!el) return;
+        playClick();
+      }, true);
+      document.addEventListener('keydown', function(e){
+        if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('btn')){
+          playClick();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
